@@ -40,6 +40,25 @@
   75%  { content: '...'; }
   100% { content: ''; }
 }
+
+header {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+header a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid #333;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+header a:hover {
+  color: #fff;
+  border-color: #666;
+}
 </style>
 </head>
 <body>
@@ -48,4 +67,7 @@
     <p>Veuillez revenir plus tard<span id="dots"></span></p>
   </div>
 </body>
+<footer>
+  <a href="https://status.natolix.me">Status</a>
+</footer>
 </html>
