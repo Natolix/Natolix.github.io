@@ -5,3 +5,139 @@
 </head>
 </html>
 <p>You will be redirected shortly...</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natolix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2430; --muted: #5b6572; --line: #dde2e8; --bg: #f7f8fa;
+    --card: #ffffff; --accent: #33507a;
+  }
+  [data-theme="dark"] {
+    --ink: #e8ebef; --muted: #8c96a3; --line: #2a3340; --bg: #12161c;
+    --card: #1a2028; --accent: #6f95c9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; transition: background 0.2s, color 0.2s; }
+  main { width: 100%; max-width: 640px; margin: 0 auto; padding: 60px 20px 100px; }
+
+  .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+  h1 { font-size: 1.8rem; font-weight: 700; margin: 0 0 6px; }
+  .sub { color: var(--muted); font-size: 1rem; margin: 0; }
+
+  .theme-toggle { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 7px 14px; color: var(--muted); font-family: inherit; font-size: 0.85rem; cursor: pointer; white-space: nowrap; }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--accent); }
+
+  h2.category { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin: 40px 0 14px; text-transform: uppercase; letter-spacing: 0.04em; }
+  h2.category:first-of-type { margin-top: 0; }
+
+  p.intro { color: var(--ink); font-size: 0.98rem; line-height: 1.6; margin: 0; }
+
+  .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid var(--line);
+    padding: 7px 14px;
+    border-radius: 20px;
+    transition: 0.15s;
+  }
+  .links a:hover { color: var(--ink); border-color: var(--accent); }
+
+  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  li { border-bottom: 1px solid var(--line); }
+  a.project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 4px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  a.project:hover .name { color: var(--accent); }
+  .name { font-weight: 500; font-size: 0.98rem; transition: color 0.15s; }
+  .desc { color: var(--muted); font-size: 0.85rem; margin-top: 3px; }
+  .arrow { color: var(--muted); font-size: 1.1rem; flex-shrink: 0; margin-left: 16px; }
+
+  .tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    border-radius: 12px;
+  }
+
+  footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="top">
+    <div>
+      <h1>Natolix</h1>
+      <p class="sub">Étudiant à Reims</p>
+    </div>
+    <button class="theme-toggle" id="themeToggle">Thème sombre</button>
+  </div>
+
+  <p class="intro">
+    Je fais des trucs qui me paraissent cool et je les mets publiquement
+  </p>
+
+  <div class="links">
+    <a href="https://github.com/Natolix" target="_blank">GitHub</a>
+    <a href="mailto:contact@natolix.me">Email</a>
+    <a href="https://tools.natolix.me">Outils</a>
+    <a href="https://youtube.com/@itsnatolix" target="_blank">YouTube</a>
+  </div>
+
+  <h2 class="category">Projets</h2>
+  <ul>
+    <li>
+      <a class="project" href="#">
+        <div>
+          <div class="name">Compagnon</div>
+          <div class="desc">PRONOTE mais en mieux.</div>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">JS</span></div>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </li>
+  </ul>
+
+  <footer>natolix.me</footer>
+</main>
+
+<script>
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  function applyTheme(t) {
+    if (t === 'dark') { root.setAttribute('data-theme', 'dark'); themeToggle.textContent = 'Thème clair'; }
+    else { root.removeAttribute('data-theme'); themeToggle.textContent = 'Thème sombre'; }
+  }
+  applyTheme(localStorage.getItem('theme') || 'light');
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+</script>
+</body>
+</html>
